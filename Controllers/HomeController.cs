@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using sample_app.Data;
 using sample_app.Models;
 
 namespace sample_app.Controllers
@@ -13,14 +14,17 @@ namespace sample_app.Controllers
     {
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly ProductContext _context;
+
+        public HomeController(ILogger<HomeController> logger, ProductContext context)
         {
             _logger = logger;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            return View();
+            return View(_context.Product.ToList());
         }
 
         public IActionResult Privacy()
