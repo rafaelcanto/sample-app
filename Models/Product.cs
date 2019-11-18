@@ -1,0 +1,14 @@
+using System;
+using System.ComponentModel.DataAnnotations;
+
+namespace sample_app.Models
+{
+    public class Product
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateTime ReleaseDate { get; set; }
+    }
+}
